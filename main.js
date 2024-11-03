@@ -18,11 +18,11 @@ async function fetchTickets() {
         const tickets = await response.json();
 
         //if no tickets are found, throw a new custom error
-        if (tickets === 0) {
+        if (tickets.length === 0) {
             throw new Error('No unresolved tickets available');
         }
 
-        display(tickets);
+        displayTickets(tickets);
     } catch (error) {
         document.getElementById('error-message').textContent = `Error: ${error.message}`;
     //TASK 4 - Use finally to Ensure Cleanup
