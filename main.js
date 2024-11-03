@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', fetchTickets);
 //TASK 2 - Fetch Tickets Using Async/Await and Handle Errors:
 
 //using the aysnc function to fetch the tickets from the api
@@ -22,11 +23,14 @@ async function fetchTickets() {
         }
 
         display(tickets);
+    } catch (error) {
+        document.getElementById('error-message').textContent = `Error: ${error.message}`;
+    //TASK 4 - Use finally to Ensure Cleanup
+    } finally {
+        console.log('Fetch attempt finished');
+    }
+}
 
-        //TASK 4 - 
-    
-
-  }  } 
 
 //TASK 3 - Display Tickets Dynamically on the Page:
 
