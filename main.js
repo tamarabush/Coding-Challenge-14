@@ -1,4 +1,4 @@
-//TASK 2 Fetch Tickets Using Async/Await and Handle Errors:
+//TASK 2 - Fetch Tickets Using Async/Await and Handle Errors:
 
 //using the aysnc function to fetch the tickets from the api
 async function fetchTickets() {
@@ -20,7 +20,30 @@ async function fetchTickets() {
         if (tickets === 0) {
             throw new Error('No unresolved tickets available');
         }
+
+        display(tickets);
+
+        //TASK 4 - 
     
 
   }  } 
-  
+
+//TASK 3 - Display Tickets Dynamically on the Page:
+
+function displayTickets(tickets) {
+    const container = document.getElementById('ticket-container');
+
+    tickets.forEach(ticket => {
+        //using for each method to iterate over the tickets 
+        //using innerHTML to create HTML elements for each element
+        const ticketElement = document.createElement('div');
+        ticketElement.innerHTML = `
+            <h2>Ticket ID: ${ticket.id}</h2>
+            <p><strong>Customer Name:</strong> User ${ticket.userId}</p>
+            <p><strong>Issue Description:</strong> ${ticket.title}</p>
+            <p><strong>Details:</strong> ${ticket.body}</p>
+            <hr>
+        `;
+        container.appendChild(ticketElement);
+    });
+}
